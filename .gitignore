@@ -1,4 +1,4 @@
-venv
+ven
 *.pyc
 migrations
 db.sqlite3

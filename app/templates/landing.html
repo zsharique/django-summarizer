@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head><title>Summarizer</title></head>
+	<body>
+		<form method="POST" action=""> {% csrf_token %}
+			<h2>Enter your text here!</h2>
+			{{ form.as_p }}
+			<br><input type="submit" name="summarize" value="Summarize"/>
+		</form>
+		<br>
+		<ul>
+			{% for sentence, score in result %}
+    			<li>{{ sentence }}  {{ score }}</li>
+			{% endfor %}
+		</ul>	
+	</body>
+</html>

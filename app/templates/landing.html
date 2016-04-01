@@ -4,13 +4,18 @@
 	<body>
 		<form method="POST" action=""> {% csrf_token %}
 			<h2>Enter your text here!</h2>
-			{{ form.as_p }}
-			<br><input type="submit" name="summarize" value="Summarize"/>
+			{{ form1.as_p }}
+			<input type="submit" name="summarize" value="Summarize"/>
+		</form>
+		<br><br><h2>Or</h2>
+		<form method="POST" action"" enctype="multipart/form-data"> {% csrf_token %}
+		    {{ form2 }}
+		    <input type="submit" name="summarize" value="Summarize"/>
 		</form>
 		<br>
 		<ul>
 			{% for sentence, score in result %}
-    			<li>{{ sentence }}  {{ score }}</li>
+    			<li>{{ sentence }}<br>{{ score }}</li><br>
 			{% endfor %}
 		</ul>	
 	</body>

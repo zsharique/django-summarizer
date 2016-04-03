@@ -14,7 +14,7 @@
 		</form>
 		<br>
 		<ul>
-			{% for sentence, score in result %}
+			{% for score, sentence in result %}
     			<li>{{ sentence }}<br>{{ score }}</li><br>
 			{% endfor %}
 		</ul>	

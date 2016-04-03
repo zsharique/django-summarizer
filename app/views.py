@@ -26,6 +26,7 @@ def landing_view(request):
 	}
 	return render(request, "landing.html", context)
 
+
 def handle_file(f):
 	f.seek(0)
 	para = f.read()

@@ -3,7 +3,9 @@
 from nltk import tokenize
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from copy import copy
 import re
+
 
 
 def getParagraphs(content):
@@ -111,9 +113,31 @@ def build(sentences, scoreGraph, orig_sentences):
     return aggregateScore
 
 
+def summarize(temp_list):
+    """
+    Summarizes the content to 50 percent on the basis of sentence score
+    :param temp: (list) list of score and sentence tuple
+    :returns:
+    """
+    orig_list = copy(temp_list)
+    result = []
+    orig_list.sort()
+    if len(temp_list)%2 == 0:
+        n = (len(temp_list)/2)
+    else:
+        n = len(temp_list)/2
+    median, sentence = orig_list[n]
+    for orig_score, orig_sentence in temp_list:
+        if orig_score >= median:
+            result.append((orig_score, orig_sentence))
+    print "The median is %r" %median
+    return result[0:n+1]
+
+
 def main(text):
     content = text
     paragraphs = getParagraphs(content)
+    temp_list = []
     result = []
     for paragraph in paragraphs:
         if paragraph:
@@ -122,5 +146,5 @@ def main(text):
             graph = sentenceGraph(sentences)
             score = build(sentences, graph, orig_sentences)
         for i in indexed:
-            result.append((indexed[i], score[indexed[i]]))
-    return result
+            temp_list.append((score[indexed[i]], indexed[i]))
+    return summarize(temp_list)

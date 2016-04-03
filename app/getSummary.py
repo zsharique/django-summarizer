@@ -117,7 +117,7 @@ def summarize(temp_list):
     """
     Summarizes the content to 50 percent on the basis of sentence score
     :param temp: (list) list of score and sentence tuple
-    :returns:
+    :returns: List containing summarized content.
     """
     orig_list = copy(temp_list)
     result = []

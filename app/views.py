@@ -31,4 +31,8 @@ def handle_file(f):
 	f.seek(0)
 	para = f.read()
 	para = para.replace('\n',' ')
-	return para	
+	return para
+
+def home_view(request):
+	context = RequestContext(request)
+	return render_to_response("home.html", context)	

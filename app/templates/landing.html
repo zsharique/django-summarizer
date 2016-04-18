@@ -1,7 +1,9 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 	<head><title>Summarizer</title></head>
 	<body>
+		<img src="{% static 'app/img/summarizer.png' %}" />
 		<form method="POST" action=""> {% csrf_token %}
 			<h2>Enter your text here!</h2>
 			{{ form1.as_p }}
